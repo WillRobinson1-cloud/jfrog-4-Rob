@@ -5,7 +5,7 @@ pipeline {
         ARTIFACTORY_REPO = "tf--terraform-modules-local"
         NAMESPACE = "willrobinson"
         MODULE_NAME = "will-robinson"
-        VERSION = "Domingo"
+        VERSION = "4-Rob"
     }
     stages {
         stage('Install JFrog CLI') {
