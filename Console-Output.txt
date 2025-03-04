@@ -1,0 +1,78 @@
+Started by user Will Robinson
+
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/workspace/Pipeline-4-Rob
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Install JFrog CLI)
+[Pipeline] sh
++ 
++ echo JFrog CLI not found. Installing...
+JFrog CLI not found. Installing...
++ command -v jfrog
+/usr/local/bin/jfrog
++ curl -fL https://getcli.jfrog.io
++ sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  1759  100  1759    0     0   4240      0 --:--:-- --:--:-- --:--:--  4248
+Downloading the latest v1 version of JFrog CLI...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+
+ 17 19.2M   17 3377k    0     0  2497k      0  0:00:07  0:00:01  0:00:06 2497k
+ 47 19.2M   47 9457k    0     0  4021k      0  0:00:04  0:00:02  0:00:02 6080k
+ 76 19.2M   76 14.8M    0     0  4499k      0  0:00:04  0:00:03  0:00:01 5843k
+100 19.2M  100 19.2M    0     0  4903k      0  0:00:04  0:00:04 --:--:-- 6123k
++ chmod +x jfrog
++ sudo mv jfrog /usr/local/bin/
+/var/jenkins_home/workspace/Pipeline-4-Rob@tmp/durable-cc1bf98a/script.sh.copy: 6: sudo: not found
++ echo Running with local binary
+Running with local binary
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Artifact)
+[Pipeline] sh
++ echo Building artifact...
+Building artifact...
+[Pipeline] sh
++ mkdir -p dist
++ echo dummy content
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Upload Artifact)
+[Pipeline] withCredentials
+Masking supported pattern matches of $ARTIFACTORY_API_KEY
+[Pipeline] {
+[Pipeline] sh
++ jfrog rt upload dist/*.zip tf--terraform-modules-local/willrobinson/will-robinson/4-Rob/ --url=https://trialhebjcm.jfrog.io/artifactory --user=soleevolutionent@gmail.com --apikey=****
+[Info] [Thread 2] Uploading artifact: dist/test.zip
+{
+  "status": "success",
+  "totals": {
+    "success": 1,
+    "failure": 0
+  }
+}
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
