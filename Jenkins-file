@@ -65,7 +65,7 @@ pipeline {
         }
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/aaron-dm-mcdonald/jenkins-ec2.git' 
+                git branch: 'main', url: 'https://github.com/WillRobinson1-cloud/jfrog-4-Rob.git' 
             }
         }
         stage('Initialize Terraform') {
